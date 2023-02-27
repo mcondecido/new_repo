@@ -1,7 +1,12 @@
-from django.urls import path
+from django.contrib import admin
+from django.urls import include, path
+
 from . import views
 
 app_name = 'tutorme'
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
+    path('accounts/', include('allauth.urls')),
+    path('auth/', views.AuthView.as_view(), name='auth'),
+    path('student/', views.StudentView.as_view(), name='student'),
 ]

@@ -139,15 +139,24 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-SITE_ID = 2
+SITE_ID = 3
 
-LOGIN_REDIRECT_URL = '/'
+AUTH_USER_MODEL = 'tutorme.AppUser'
+
+
+LOGIN_REDIRECT_URL = '/tutorme/student'
 LOGOUT_REDIRECT_URL = '/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ACCOUNT_EMAIL_VERIFICATION = "none"
 
 SOCIALACCOUNT_QUERY_EMAIL = True
 ACCOUNT_LOGOUT_ON_GET= True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_REQUIRED = True
+
+SOCIALACCOUNT_AUTO_SIGNUP = False
+SOCIALACCOUNT_FORMS = {'signup': 'tutorme.forms.CustomSignupForm'}
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {

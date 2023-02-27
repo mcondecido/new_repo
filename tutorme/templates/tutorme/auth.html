@@ -44,10 +44,15 @@
           <h3 class="text-center login-title">Sign In</h3>
         </div>
         <div class="card-body">
-          <center><a class="btn btn-outline-dark" href="{% provider_login_url 'google' %}" role="button" style="text-transform:none">
-              <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
-              Sign in for tutors and students
-              </a></center> 
+          {% load socialaccount %}
+          <center>
+          <a class="btn btn-outline-dark" href="{% provider_login_url 'google' %}" role="button" style="text-transform:none">
+              I'm a student
+          </a> 
+          <a class="btn btn-outline-dark" href="{% provider_login_url 'google' %}" role="button" style="text-transform:none">
+              I'm a tutor
+          </a> 
+          </center>
         </div>
       </div>
     </div>

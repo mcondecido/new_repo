@@ -7,5 +7,15 @@ from django.utils import timezone
 class IndexView(generic.ListView):
     template_name = 'tutorme/index.html'
     context_object_name = 'tutors'
+    def get_queryset(self):
+        return
 
-
+class AuthView(generic.ListView):
+    template_name = 'tutorme/auth.html'
+    def get_queryset(self):
+        return
+    
+class StudentView(generic.ListView):
+    template_name = 'tutorme/student.html'
+    def get_queryset(self):
+        return
