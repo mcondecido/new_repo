@@ -20,6 +20,7 @@ from . import views
 
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
-    path('tutorme/', include('tutorme.urls')),
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),
+    path('tutorme/', include('tutorme.urls')),
 ]
