@@ -1,0 +1,9 @@
+.sidebar {
+    float: left;
+    margin-right: 3rem;
+    padding-top: 2rem;
+  }
+.main {
+    overflow: hidden;
+    padding-top: 2rem;
+  }
