@@ -7,3 +7,15 @@ class AppUser(AbstractUser):
 
 class Student(models.Model):
     user = models.OneToOneField(AppUser, on_delete=models.CASCADE, primary_key=True)
+
+
+class Course(models.Model):
+    title = models.CharField(max_length=100)
+    subject = models.CharField(max_length=10)
+    catalog_number = models.CharField(max_length=10)
+    course_id = models.CharField(max_length=10)
+    is_enrolled = models.BooleanField(default=False)
+    meeting_days = models.CharField(max_length=10)
+    start_time = models.CharField(max_length=200)
+    end_time = models.CharField(max_length=200)
+
