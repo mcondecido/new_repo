@@ -24,3 +24,13 @@ class CourseSearchView(generic.ListView):
     template_name = 'tutorme/course_search.html'
     def get_queryset(self):
         return
+
+class AboutView(generic.ListView):
+    template_name = 'tutorme/about.html'
+    def get_queryset(self):
+        return
+
+class StudentProfileView(generic.ListView):
+    template_name = 'tutorme/profile.html'
+    def get_queryset(self):
+        return
