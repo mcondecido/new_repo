@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'tutorme.apps.TutormeConfig',
+    'schedule_builder.apps.ScheduleBuilderConfig'
 ]
 
 MIDDLEWARE = [
