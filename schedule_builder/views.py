@@ -3,8 +3,17 @@ from django.shortcuts import render
 # Create your views here.
 from django.shortcuts import render
 from django.http import JsonResponse 
-from schedule_builder.models import Events 
- 
+from schedule_builder.models import Events
+
+from .forms import AddClass
+
+def addClass(request):
+    form = AddClass()
+    context = {
+        "events": all_events,
+    }
+    return render(request,'schedule_index.html', context, {'form': form})
+
 def index(request):  
     all_events = Events.objects.all()
     context = {
