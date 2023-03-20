@@ -4,6 +4,8 @@ from django.db import models
 class AppUser(AbstractUser):
     is_tutor = models.BooleanField(default=False)
     is_student = models.BooleanField(default=False)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
 
 class Student(models.Model):
     user = models.OneToOneField(AppUser, on_delete=models.CASCADE, primary_key=True)
