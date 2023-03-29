@@ -1,5 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.dispatch import receiver #add this
+from django.db.models.signals import post_save
 
 class AppUser(AbstractUser):
     is_tutor = models.BooleanField(default=False)
@@ -7,9 +9,17 @@ class AppUser(AbstractUser):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
 
-class Student(models.Model):
-    user = models.OneToOneField(AppUser, on_delete=models.CASCADE, primary_key=True)
+class StudentProfile(models.Model):
+    user = models.OneToOneField(AppUser, on_delete=models.CASCADE, primary_key = True)
 
+    @receiver(post_save, sender=AppUser)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            StudentProfile.objects.create(user=instance)
+
+    @receiver(post_save, sender=AppUser)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.profile.save()
 
 class Course(models.Model):
     title = models.CharField(max_length=100)
