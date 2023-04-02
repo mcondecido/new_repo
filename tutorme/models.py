@@ -17,9 +17,9 @@ class StudentProfile(models.Model):
         if created:
             StudentProfile.objects.create(user=instance)
 
-    @receiver(post_save, sender=AppUser)
-    def save_user_profile(sender, instance, **kwargs):
-        instance.profile.save()
+    # @receiver(post_save, sender=AppUser)
+    #  def save_user_profile(sender, instance, **kwargs):
+    #     instance.profile.save()
 
 class Course(models.Model):
     title = models.CharField(max_length=100)

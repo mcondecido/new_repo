@@ -32,7 +32,6 @@ ALLOWED_HOSTS = ['localhost:8000', '127.0.0.1', 'tutorme-project-a-14.herokuapp.
 # Application definition
 
 INSTALLED_APPS = [
-    'tutorme.apps.TutormeConfig',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -141,7 +140,7 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-SITE_ID = 4
+SITE_ID = 9
 
 AUTH_USER_MODEL = 'tutorme.AppUser'
 
