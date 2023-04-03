@@ -4,9 +4,12 @@ from django.shortcuts import render
 from django.shortcuts import render
 from django.http import JsonResponse 
 from schedule_builder.models import Events
+from django.contrib.auth.decorators import login_required
 
 from .forms import AddClass
 
+
+@login_required
 def addClass(request):
     form = AddClass()
     context = {
@@ -14,15 +17,18 @@ def addClass(request):
     }
     return render(request,'schedule_index.html', context, {'form': form})
 
+@login_required
 def index(request):  
+    user = request.user
     all_events = Events.objects.all()
     context = {
         "events":all_events,
     }
     return render(request,'schedule_index.html',context)
  
+@login_required
 def all_events(request):                                                                                                 
-    all_events = Events.objects.all()                                                                                    
+    all_events = Events.objects.filter(tutor = request.user)                                                                                    
     out = []                                                                                                             
     for event in all_events:                                                                                             
         out.append({                                                                                                     
@@ -34,15 +40,18 @@ def all_events(request):
                                                                                                                       
     return JsonResponse(out, safe=False) 
  
+@login_required
 def add_event(request):
     start = request.GET.get("start", None)
     end = request.GET.get("end", None)
     title = request.GET.get("title", None)
     event = Events(name=str(title), start=start, end=end)
+    event.tutor = request.user
     event.save()
     data = {}
     return JsonResponse(data)
  
+@login_required
 def update(request):
     start = request.GET.get("start", None)
     end = request.GET.get("end", None)
@@ -56,6 +65,7 @@ def update(request):
     data = {}
     return JsonResponse(data)
  
+@login_required
 def remove(request):
     id = request.GET.get("id", None)
     event = Events.objects.get(id=id)
