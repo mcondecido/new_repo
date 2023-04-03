@@ -21,6 +21,18 @@ class StudentProfile(models.Model):
     #  def save_user_profile(sender, instance, **kwargs):
     #     instance.profile.save()
 
+class TutorProfile(models.Model):
+    user = models.OneToOneField(AppUser, on_delete=models.CASCADE, primary_key = True)
+
+    @receiver(post_save, sender=AppUser)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            TutorProfile.objects.create(user=instance)
+
+    # @receiver(post_save, sender=AppUser)
+    #  def save_user_profile(sender, instance, **kwargs):
+    #     instance.profile.save()
+
 class Course(models.Model):
     title = models.CharField(max_length=100)
     subject = models.CharField(max_length=10)
