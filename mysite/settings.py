@@ -26,9 +26,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-tav%qb=g1$3emx
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 DEBUG = False
-ALLOWED_HOSTS = ['localhost:8000', '127.0.0.1', 'tutorme-project-a-14.herokuapp.com']
-
-
+ALLOWED_HOSTS = ['localhost:8000', '127.0.0.1', 'tutorme-project-a-14.herokuapp.com', '127.0.0.1:8080']
 # Application definition
 
 INSTALLED_APPS = [
@@ -45,6 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'schedule_builder.apps.ScheduleBuilderConfig',
+    'tutorme'
+    
+    
 ]
 
 MIDDLEWARE = [
@@ -139,7 +140,7 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-SITE_ID = 10
+SITE_ID = 11
 
 AUTH_USER_MODEL = 'tutorme.AppUser'
 
@@ -154,6 +155,7 @@ SOCIALACCOUNT_QUERY_EMAIL = True
 ACCOUNT_LOGOUT_ON_GET= True
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_REQUIRED = True
+
 
 SOCIALACCOUNT_AUTO_SIGNUP = False
 SOCIALACCOUNT_FORMS = {'signup': 'tutorme.forms.CustomSignupForm'}
